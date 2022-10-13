@@ -2,8 +2,8 @@ package pagosEmpresa.controllers;
 
 public interface IEmpresaController {
     void AgregarEmpleados();
-    void AñadirEmpresasContratadas();
-    void AñadirCategorias();
+    void addEmpresasContratadas();
+    void addCategorias();
     void consultarPagos();
     void RealizarPagos();
     void RevisarPagosRealizados();

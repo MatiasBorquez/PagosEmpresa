@@ -5,43 +5,13 @@ package pagosEmpresa;
 
 import javax.swing.JOptionPane;
 
-import pagosEmpresa.controllers.EmpresaController;
-
 public class App {
 
     public static void main(String[] args) {
-        Integer desicion;
-        EmpresaController controller = new EmpresaController();
-        do {
-            desicion = Integer.parseInt(JOptionPane.showInputDialog(null, "Que desea hacer?: \n\t1- Añadir empleado." + 
-            " \n\t2- Añadir empresa Contratada \n\t3- Añadir Categoria \n\t4- Consultar pagos a realizar \n\t5- RealizarPagos"+
-            " \n\t6- Revisar Pagos realizados \n\t7- Revisar empleado \n\t8- Salir"));
-            switch (desicion) {
-                case 1:
-                    controller.AgregarEmpleados();
-                    break;
-                case 2:
-                    controller.AñadirEmpresasContratadas();
-                    break;
-                case 3:
-                    controller.AñadirCategorias();
-                    break;
-                case 4:
-                    controller.consultarPagos();
-                    break;
-                case 5:
-                    controller.RealizarPagos();
-                    break;
-                case 6:
-                    controller.RevisarPagosRealizados();
-                    break;
-                case 7:
-                    controller.ReavisarEmpleados();
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "No a seleccionado ninguna opcion");
-                    break;
-            }
-        } while ((desicion!=8));
+        
+    }
+
+    public Object getGreeting() {
+        return null;
     }
 }

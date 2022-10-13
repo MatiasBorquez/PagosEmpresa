@@ -1,63 +1,86 @@
 package pagosEmpresa.model;
 
-public class Empleado {
-    private CategoriaEmpleado categoria;
+public abstract class Empleado {
     private String nombre;
     private String apellido;
-    private Integer cbu;
-    private String banco;
     private Integer cuil;
-    private Double sueldoNeto;
-    private Double sueldoBruto;
-    private Double impuestosPagados;
-    private Double impuestosCobrados = 0.2;
-    private Double ventasRealizadas;
-
-    public Empleado(CategoriaEmpleado categoria, String nombre, String apellido, Integer cbu, String banco,
-            Integer cuil, Double ventasRealizadas) {
-        this.categoria = categoria;
+    private Integer cbu;
+    private Double bono;
+    private Double salario;
+    private Double sueldoBase; 
+ 
+    public Empleado(String nombre, String apellido, Integer cuil, Integer cbu, Double sueldoBase) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.cbu = cbu;
-        this.banco = banco;
         this.cuil = cuil;
-        this.ventasRealizadas = ventasRealizadas;
+        this.cbu = cbu;
+        this.sueldoBase = sueldoBase;
     }
 
-    public CategoriaEmpleado getCategoria() {
-        return categoria;
+    public Double CalcularSalario(){
+        return sueldoBase + bono;
     }
 
-    public Double totalAPagar(){
-        this.sueldoBruto = ((categoria.getSueldoBase() + (categoria.getIncrementoVentaExistosas() * ventasRealizadas) ));
-        this.sueldoNeto = sueldoBruto * impuestosCobrados;
-        this.impuestosPagados = sueldoBruto - sueldoNeto;
-        return sueldoBruto;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Integer getCuil() {
+        return cuil;
+    }
+
+    public void setCuil(Integer cuil) {
+        this.cuil = cuil;
+    }
+
+    public Integer getCbu() {
+        return cbu;
+    }
+
+    public void setCbu(Integer cbu) {
+        this.cbu = cbu;
+    }
+
+    public Double getBono() {
+        return bono;
+    }
+
+    public void setBono(Double bono) {
+        this.bono = bono;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
 
 
-    public Double getVentasRealizadas() {
-        return ventasRealizadas;
+    public Double getSueldoBase() {
+        return sueldoBase;
     }
 
-    public void setVentasRealizadas(Double ventasRealizadas) {
-        this.ventasRealizadas = ventasRealizadas;
-    }
 
-    public Double getSueldoNeto() {
-        return sueldoNeto;
-    }
 
-    public Double getSueldoBruto() {
-        return sueldoBruto;
-    }
-
-    public Double getImpuestosPagados() {
-        return impuestosPagados;
+    public void setSueldoBase(Double sueldoBase) {
+        this.sueldoBase = sueldoBase;
     }
 
     
-
     
 }

@@ -2,30 +2,27 @@ package pagosEmpresa.model;
 
 public class CategoriaEmpleado {
     private String nombreCategoria;
-    private Double incrementoVentaExistosas;
-    private Double sueldoBase;
-    private Integer id;
-    private static Integer count = 1;
+    private Double incrementoxCategoria;
 
-    public CategoriaEmpleado(String nombreCategoria, Double incrementoVentaExistosas, Double sueldoBase) {
+    public CategoriaEmpleado(String nombreCategoria, Double incrementoxCategoria) {
         this.nombreCategoria = nombreCategoria;
-        this.incrementoVentaExistosas = incrementoVentaExistosas;
-        this.sueldoBase = sueldoBase;
-        id =count++;
+        this.incrementoxCategoria = incrementoxCategoria;
     }
 
     public String getNombreCategoria() {
         return nombreCategoria;
     }
 
-    public Double getIncrementoVentaExistosas() {
-        return incrementoVentaExistosas;
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
     }
 
-    public Double getSueldoBase() {
-        return sueldoBase;
+    public Double getIncrementoxCategoria() {
+        return incrementoxCategoria;
     }
-    
-    
+
+    public void setIncrementoxCategoria(Double incrementoxCategoria) {
+        this.incrementoxCategoria = incrementoxCategoria;
+    }
 
 }
