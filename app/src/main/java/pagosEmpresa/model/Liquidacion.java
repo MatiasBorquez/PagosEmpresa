@@ -1,19 +1,19 @@
 package pagosEmpresa.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Liquidacion implements Pago {
     private LocalDate fechaLiquidcion;
-    private List<Empleado> empleadosLiquidados;
-    private List<EmpresaContratada> empresasLiquidadas;
+    private AgendaEmpleados empleadosLiquidados;
+    private ListasEmpresasContratadas empresasLiquidadas;
     private Double Total;
 
-    public Liquidacion(LocalDate fechaLiquidcion, List<Empleado> empleadosLiquidados,
-            List<EmpresaContratada> empresasLiquidadas) {
+    public Liquidacion(LocalDate fechaLiquidcion) {
         this.fechaLiquidcion = fechaLiquidcion;
-        this.empleadosLiquidados = empleadosLiquidados;
-        this.empresasLiquidadas = empresasLiquidadas;
+    }
+
+    public Liquidacion() {
+        fechaLiquidcion = LocalDate.now();
     }
 
     public LocalDate getFechaLiquidcion() {
@@ -24,44 +24,44 @@ public class Liquidacion implements Pago {
         this.fechaLiquidcion = fechaLiquidcion;
     }
 
-    public List<Empleado> getEmpleadosLiquidados() {
+    public AgendaEmpleados getEmpleadosLiquidados() {
         return empleadosLiquidados;
     }
 
-    public void setEmpleadosLiquidados(List<Empleado> empleadosLiquidados) {
+    public void setEmpleadosLiquidados(AgendaEmpleados empleadosLiquidados) {
         this.empleadosLiquidados = empleadosLiquidados;
     }
 
     @Override
-    public Double consultarPagos(List<Object> empleados, List<EmpresaContratada> empresas) {
+    public Double consultarPagos(AgendaEmpleados empleados, ListasEmpresasContratadas empresas) {
         pagarServicioEmpleados(empleados);
         pagarServicioEmpresas(empresas);
         return Total;
     }
 
     @Override
-    public void pagarServicio(List<Object> empleados, List<EmpresaContratada> empresas) {
+    public void pagarServicio(AgendaEmpleados empleados, ListasEmpresasContratadas empresas) {
         pagarServicioEmpleados(empleados);
         pagarServicioEmpresas(empresas);
-        
+
     }
 
-    public void pagarServicioEmpleados(List<Object> empleados) {
-        for (Object empleado : empleados) {
-            ((Empleado) empleado).setSalario(((Empleado) empleado).CalcularSalario());
-            empleadosLiquidados.add((Empleado) empleado);
-            Total += ((Empleado)empleado).getSalario();
+    private void pagarServicioEmpleados(AgendaEmpleados empleados) {
+        for (Empleado empleado : empleados.getEmpleados()) {
+            empleado.setSalario(empleado.CalcularSalario());
+            empleadosLiquidados.agregarEmpleado(empleado);
+            Total += ((Empleado) empleado).getSalario();
         }
 
     }
 
-    public void pagarServicioEmpresas(List<EmpresaContratada> empresas) {
-        for (EmpresaContratada empresa : empresas) {
+    private void pagarServicioEmpresas(ListasEmpresasContratadas empresas) {
+        for (EmpresaContratada empresa : empresas.getEmpresas()) {
             empresa.pagarServicio();
-            empresasLiquidadas.add(empresa);
+            empresasLiquidadas.agregarEmpresaContratada(empresa);
             Total += empresa.getCostoServicio();
         }
-        
+        empresas.LimpiarLista();
     }
 
 }
