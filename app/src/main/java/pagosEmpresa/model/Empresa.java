@@ -58,4 +58,5 @@ public class Empresa {
     public void buscarEmpresa(String cuit){
         empresas.encontrarEmpresaContratada(cuit);
     }
+
 }

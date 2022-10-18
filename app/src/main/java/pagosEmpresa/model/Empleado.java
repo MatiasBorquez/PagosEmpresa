@@ -5,9 +5,9 @@ public abstract class Empleado {
     private String apellido;
     private Integer cuil;
     private Integer cbu;
-    private Double bono;
-    private Double salario;
-    private Double sueldoBase; 
+    private Double bono=0.0;
+    private Double salario=0.0;
+    private Double sueldoBase=0.0; 
  
     public Empleado(String nombre, String apellido, Integer cuil, Integer cbu, Double sueldoBase) {
         this.nombre = nombre;

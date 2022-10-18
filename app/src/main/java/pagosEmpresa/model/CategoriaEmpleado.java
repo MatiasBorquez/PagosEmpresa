@@ -2,7 +2,7 @@ package pagosEmpresa.model;
 
 public class CategoriaEmpleado {
     private String nombreCategoria;
-    private Double incrementoxCategoria;
+    private Double incrementoxCategoria=0.0;
 
     public CategoriaEmpleado(String nombreCategoria, Double incrementoxCategoria) {
         this.nombreCategoria = nombreCategoria;

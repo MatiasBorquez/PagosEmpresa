@@ -1,6 +1,7 @@
 package pagosEmpresa.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoComisionado extends Empleado{
@@ -11,11 +12,12 @@ public class EmpleadoComisionado extends Empleado{
     public EmpleadoComisionado(String nombre, String apellido, Integer cuil, Integer cbu, Double sueldoBase,
             List<Comision> comisiones) {
         super(nombre, apellido, cuil, cbu, sueldoBase);
-        this.comisiones = comisiones;
+        comisiones = new ArrayList<>();
     }
 
     public EmpleadoComisionado(String nombre, String apellido, Integer cuil, Integer cbu, Double sueldoBase) {
         super(nombre, apellido, cuil, cbu, sueldoBase);
+        comisiones = new ArrayList<>();
     }
 
     public void AddComision(LocalDate fechaComision, Double valorComision){
@@ -30,6 +32,7 @@ public class EmpleadoComisionado extends Empleado{
 
     private Double procesarComision(){
         double comisionActual = 0.0;
+        if(comisiones.equals(null)){return comisionActual;}
         for (Comision comision : comisiones) {
             comisionActual += comision.getValorComision();
         }

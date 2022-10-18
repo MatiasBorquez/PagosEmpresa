@@ -1,11 +1,16 @@
 package pagosEmpresa.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pagosEmpresa.error.EmpresaInexistenteExc;
 
 public class ListasEmpresasContratadas {
     private List<EmpresaContratada> empresas;
+
+    public ListasEmpresasContratadas() {
+        empresas = new ArrayList<>();
+    }
 
     public void agregarEmpresaContratada(EmpresaContratada empresa){
         if (!(this.existeEmpresaContratada(empresa.getCuit()))) {

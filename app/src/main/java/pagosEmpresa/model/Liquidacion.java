@@ -8,6 +8,14 @@ public class Liquidacion implements Pago {
     private ListasEmpresasContratadas empresasLiquidadas;
     private Double Total;
 
+    public ListasEmpresasContratadas getEmpresasLiquidadas() {
+        return empresasLiquidadas;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
     public Liquidacion(LocalDate fechaLiquidcion) {
         this.fechaLiquidcion = fechaLiquidcion;
     }
@@ -50,7 +58,7 @@ public class Liquidacion implements Pago {
         for (Empleado empleado : empleados.getEmpleados()) {
             empleado.setSalario(empleado.CalcularSalario());
             empleadosLiquidados.agregarEmpleado(empleado);
-            Total += ((Empleado) empleado).getSalario();
+            Total += empleado.getSalario();
         }
 
     }
