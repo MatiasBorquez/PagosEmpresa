@@ -6,7 +6,7 @@ public class Liquidacion implements Pago {
     private LocalDate fechaLiquidcion;
     private AgendaEmpleados empleadosLiquidados;
     private ListasEmpresasContratadas empresasLiquidadas;
-    private Double Total;
+    private Double Total = 0.0;
 
     public ListasEmpresasContratadas getEmpresasLiquidadas() {
         return empresasLiquidadas;
@@ -18,10 +18,14 @@ public class Liquidacion implements Pago {
 
     public Liquidacion(LocalDate fechaLiquidcion) {
         this.fechaLiquidcion = fechaLiquidcion;
+        empleadosLiquidados = new AgendaEmpleados();
+        empresasLiquidadas = new ListasEmpresasContratadas();
     }
 
     public Liquidacion() {
         fechaLiquidcion = LocalDate.now();
+        empleadosLiquidados = new AgendaEmpleados();
+        empresasLiquidadas = new ListasEmpresasContratadas();
     }
 
     public LocalDate getFechaLiquidcion() {
